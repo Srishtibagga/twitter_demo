@@ -12,9 +12,9 @@ before_action :find_tweet, only: [:create, :destroy]
       @retweet = @tweet.retweets.create(user_id: current_user.id)
       flash[:alert] = "retweeted this tweet"
       respond_to do |format|
-      format.html
-      format.js{}
-    end
+        format.html
+        format.js{}
+      end
     end
   end
   
