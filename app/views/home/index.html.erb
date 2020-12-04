@@ -1,0 +1,21 @@
+<table class="my-4 ml-4 table table-striped">
+<tr>
+  <th>User Name</th>
+  <th>Email</th>
+  <th>Suggestions</th>	
+</tr>
+  <% @users.each do |user| %>
+      <% unless current_user == user %>
+  	    <tr>
+  		    <td><%= user.user_name %></td>
+  		    <td><%= user.email %></td>
+          <% if current_user.is_following(user) %>
+            <td> <%= link_to 'Unfollow', unfollow_user_path(user), method: "POST" %> </td>
+          <% else %>
+            <td><%= link_to 'follow', follow_user_path(user), method: "POST" %></td>
+          <% end%>
+  	    </tr>
+      <% end%>
+  <% end %>
+</table>
+<%= paginate @users %>

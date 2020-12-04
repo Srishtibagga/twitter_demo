@@ -1,0 +1,14 @@
+
+<% if tweet.is_already_like(current_user) %>
+  <% like = tweet.find_like(current_user) %>
+	<%# like = tweet.likes.find_by(user_id: current_user.id) %>
+	<%= link_to tweet_like_path(tweet, like), method: :delete, class: '', :remote => true do %>
+	  <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+	<% end %>
+<% else %>
+	<%= link_to tweet_likes_path(tweet), method: :post, class: '', 
+  :remote => true do %>
+	  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+	<% end %>
+<% end %>
+<span class="my-2 count" style="padding-right: 35px;"><%= tweet.likes.count %></span>

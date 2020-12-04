@@ -1,0 +1,5 @@
+<%= form_with model: @comment, url:'tweet_comments_path(tweet)', local: true do |f| %>
+  <%#= debugger %>
+  <%= f.text_field :content, class: 'form-control-sm com-content' %>
+  <%= f.submit 'comment', class: "font-italic btn btn-sm btn-outline-info " %>
+<% end %>

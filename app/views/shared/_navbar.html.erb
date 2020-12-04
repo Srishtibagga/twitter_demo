@@ -1,0 +1,15 @@
+<nav class="navbar navbar-light bg-dark justify-content-between">
+  <a class="navbar-brand ml-3 text-light">
+    <i class="fa fa-twitter fa-lg p-1" aria-hidden="true"></i>Navbar
+  </a>
+	<% if user_signed_in? %>
+	  <%= link_to 'Home',   home_index_path, class: 'text-light my-2 mr-4 float-sm-left' %>
+	  <%= link_to 'Tweets', tweets_path, class: 'text-light my-2 my-sm-0 mr-4' %>
+	  <%= link_to 'CreateTweet', root_path, class: 'text-light my-2 my-sm-0 mr-4' %>
+    <%= link_to 'MyTweets', my_tweets_tweets_path, class: 'text-light my-2 my-sm-0 mr-4 red' %>
+    <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'css_class btn btn-outline-danger my-2 my-sm-0 mr-4', style: 'color:red' %>
+  <% else %>
+    <%= link_to 'Login', new_user_session_path, class: 'css_class btn btn-outline-success my-2 my-sm-0 mr-4', style: 'color:green'  %>
+  <% end %>
+</nav>
+<!-- <i class="fa fa-user-circle-o float-right p-3 fa-2x" aria-hidden="true"></i> -->

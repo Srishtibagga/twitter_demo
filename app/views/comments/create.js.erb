@@ -1,0 +1,5 @@
+<% if @comment.persisted? %>
+  var tweet_id = "<%= @tweet.id %>";
+  $('#comments-'+tweet_id).append("<%= escape_javascript render(partial: '/comments/comment',  locals: {comment: @comment}) %>");
+  $('.comment_text').val("");
+<% end %>

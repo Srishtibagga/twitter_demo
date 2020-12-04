@@ -1,0 +1,10 @@
+
+<div class=" mx-auto my-5 ml-auto border border-light bg-light p-4" style="width: 530px;" ">
+<%= form_with model: @tweet, local: true do |f| %>
+   
+  <p> What's happning? </p>
+  <p><%= f.text_area :content, class: 'w-75' %></p>
+  <p><%= f.submit 'Tweet', class: 'btn btn-primary' %></p>
+
+<% end %>
+</div>

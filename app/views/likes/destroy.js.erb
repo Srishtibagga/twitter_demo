@@ -1,0 +1,2 @@
+var tweet_id = "<%= @tweet.id %>";
+$('#likes-'+tweet_id).html("<%= j render partial: '/likes/likes',  locals: {tweet: @tweet} %>");

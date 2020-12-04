@@ -1,0 +1,37 @@
+<div class=" mx-auto my-5 ml-auto border border-light bg-light p-4" style="width: 430px;">
+<h2 class="my-4">Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field form-group">
+    <%= f.label :user_name %><br />
+    <input type="user_name" class="form-control w-75" placeholder="Enter Username"<%= f.text_field :user_name, autocomplete: "user_name" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :email %><br />
+    <input type="email" class="form-control w-75" placeholder="Enter email"<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <input type="password" class="form-control w-75" placeholder="Password"<%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :password_confirmation %><br />
+    <input type="password" class="form-control w-75" placeholder="Confirm Password"<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions ">
+    <%= f.submit "Sign up" %>
+    <span class="float-right"><%= render "devise/shared/links" %></div>
+    </span>
+  </div>
+<% end %>
+
+

@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="bg-light border borger-light m-4 text-center p-4 max-width" >
+
+    <div class="float-left my-0 align-baseline ">
+      <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+      <% user = tweet.find_who_tweeted %>
+      <%if defined?(all_tweet) && all_tweet %>
+        <%= user.user_name %>
+      <% elsif tweet.is_retweet(current_user) %>
+        <%# user = tweet.find_who_tweeted %>
+        <%= user.user_name %>,
+        <i class="fa fa-retweet" aria-hidden="true"></i>
+        <small> retweeted by you </small> 
+      <% else %>
+        <%= current_user.user_name %> 
+      <% end %>
+    </div><br><br>
+
+    <% tweet.images.each do |image| %>    
+      <%= image_tag image.image, style: "width:150px;height:100px;padding:10px;" %><br>
+    <% end %>
+    <b  style="font-size:29px; padding-bottom:0px;"><%= tweet.content %></b>
+
+
+    <div style="padding-bottom:45px;" class="my-2">
+      <% if is_my_tweet(tweet) %>
+        <%# if params[:action].include?('my_tweets') %>
+        <%= link_to 'edit', edit_tweet_path(tweet), class: 'btn btn-primary m-2' %>
+        <%= link_to 'Destroy', tweet_path(tweet), method: :delete, class: 'btn btn-danger m-2' %> 
+      <% else %>
+	     	<span class="likes_count my-1 p-1" id="likes-<%= tweet.id %>">
+          <%= render partial: "/likes/likes", locals: {tweet: tweet} %>
+        </span>
+        <%= link_to tweet_retweets_path(tweet), method: :post, class: '', :remote => true  do %>
+          <i class="fa fa-retweet" aria-hidden="true"></i>
+        <% end %>
+        <span class=" my-2 count count_retweets">
+          <%= tweet.retweets.count %>
+        </span>
+      <% end %>
+      <br>
+    </div>
+
+
+
+	  <div class="text-align-left", id= "comments-<%= tweet.id %>">
+	    <% tweet.comments.each do |comment| %> 
+	      <%= render partial: "/comments/comment", locals: {comment: comment} %>
+	    <% end %>
+	  </div>
+    <%= form_with model: [tweet, tweet.comments.build], remote: true do |f| %>
+      <%= f.text_field :content, class: 'form-control-sm comment_text' %>
+      <%= f.submit 'comment', class: "font-italic btn btn-sm btn-outline-info comment" %>
+    <% end %>
+
+    <%#= tweet.created_at %>
+  </div> 
+</div>

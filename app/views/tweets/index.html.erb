@@ -1,0 +1,6 @@
+<div class="all-tweets">
+	<% @tweets.each do |tweet| %>
+		<%#= render tweet %>
+		<%= render partial: "tweet", locals: {tweet: tweet, all_tweet: true} %>
+	<% end %>
+</div>

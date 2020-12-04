@@ -1,0 +1,12 @@
+
+<%# @user.tweets.each do |t| %>
+  <%#= t.content %>
+  <%#= link_to 'edit', edit_tweet_path(t) %>
+<%# end %>
+<div class="mx-auto my-5 ml-auto border border-light bg-light p-4" style="width: 530px;">
+  <p><%= @tweet.content %></p>
+  <%= link_to 'edit', edit_tweet_path(@tweet), class: 'btn btn-primary m-3' %>
+  <%= link_to 'Destroy', tweet_path(@tweet), method: :delete, class: 'btn btn-danger m-3' %>
+  <%= link_to 'Show all tweets',  my_tweets_tweets_path, class: 'btn btn-primary m-3' %>
+</div>
+

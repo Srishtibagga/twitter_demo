@@ -1,0 +1,3 @@
+$( ".flash-mesages" ).prepend( "<%= escape_javascript render(partial: '/shared/flash') %>");
+$('.all-tweets').append("<%= escape_javascript render(partial: '/tweets/tweet', locals: {tweet: @tweet}) %>");
+$('.count_retweets').html("<%= @tweet.retweets.count %>");

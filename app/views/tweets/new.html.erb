@@ -1,0 +1,14 @@
+<div class=" mx-auto my-5 ml-auto border border-light bg-light p-4" style="width: 530px;" ">
+<%= form_with model: @tweet,html: {multipart: :true}, local: true do |f| %>
+   
+  <p> What's happning? </p>
+  <p><%= f.text_area :content, class: 'w-75' %></p>
+  <p>
+  <%= f.fields_for :images do |image_form| %>
+    <%= image_form.label :image %>
+    <%= image_form.file_field :image, class: 'btn btn-outline-secondary' %>     
+  <% end %></p>
+  <p><%= f.submit 'Tweet', class: 'btn btn-primary' %></p>
+
+<% end %>
+</div>
