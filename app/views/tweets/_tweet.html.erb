@@ -7,7 +7,6 @@
       <%if defined?(all_tweet) && all_tweet %>
         <%= user.user_name %>
       <% elsif tweet.is_retweet(current_user) %>
-        <%# user = tweet.find_who_tweeted %>
         <%= user.user_name %>,
         <i class="fa fa-retweet" aria-hidden="true"></i>
         <small> retweeted by you </small> 
@@ -48,9 +47,9 @@
 	      <%= render partial: "/comments/comment", locals: {comment: comment} %>
 	    <% end %>
 	  </div>
-    <%= form_with model: [tweet, tweet.comments.build], remote: true do |f| %>
+    <%= form_with model:[tweet, tweet.comments.build] , remote: true do |f| %>
       <%= f.text_field :content, class: 'form-control-sm comment_text' %>
-      <%= f.submit 'comment', class: "font-italic btn btn-sm btn-outline-info comment" %>
+      <%= f.submit 'comment', class: "font-italic btn btn-sm py-0 btn-outline-info comment text-center" %>
     <% end %>
 
     <%#= tweet.created_at %>
